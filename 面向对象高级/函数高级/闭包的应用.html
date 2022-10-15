@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        闭包的应用:
+            定义js模块
+            具有特定功能的js文件
+            将所有的数据和功能都封装在一个函数的内部(私有的)
+            只向外暴露一个包含n个方法的对象或函数 return内部函数
+            模块的使用者,只需要通过模块暴露的对象调用方法来实现对应的功能-->
+
+    <!-- 引用外部js文件 -->
+    <script type="text/javascript" src="./myModule.js"></script>
+    <script type="text/javascript" src="./myModule02.js"></script>
+    <script type="text/javascript">
+        //调用闭包js文件方法一
+        var fn1 = myModule();//保存闭包,防止其变成垃圾数据
+        fn1.doSomething();
+        fn1.doOtherthing();
+
+        // 调用闭包js文件方法二
+        myModule02.doOtherthing();//直接调用
+        myModule02.doSomething();//直接调用
+    </script>
+</body>
+
+</html>

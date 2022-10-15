@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 测试题1 先执行变量提升，在执行函数提升
+        function a() { }
+        var a;
+        console.log(typeof a);
+
+        // 测试题2
+        if (!(b in window)) {
+            var b = 1;
+        }
+        console.log(b);//undefined
+
+        //测试题3
+        var c = 1;
+        function c(c) {
+            console.log(c);
+        }
+        c(2);
+
+        // 测试题三的另外一种表达
+        var c;//变量提升 先声明，未赋值
+        function c(c) { //函数提升 先创建，未调用
+            console.log(c);//报错 c is not a function
+        }//函数提升
+        c = 1;
+        c(2);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 判断有多少个执行上下文对象,n+1
+        // n指调用函数的次数,1指window全局执行上下文9(全局执行上下文只能有一个)
+        var a = 10;//第一个window全局执行上下文对象产生
+        var bar = function (x) {
+            var b = 5;
+            foo(x + b);//第三个名为bar的函数执行上下文对象产生
+        };
+
+        var foo = function (y) {
+            var c = 5;
+            console.log(a + c + y);//30
+        };
+        bar(10);//第二个名为foo的函数执行上下文对象产生,该处的bar函数调用会产生foo函数执行上下文
+        bar(10);//第四个名为foo的函数执行上下文对象产生,该处的bar函数调用会产生foo函数执行上下文
+                //第五个名为foo的函数执行上下文产生
+    </script>
+</head>
+
+<body>
+    <!-- 
+        执行上下文栈
+        1.在全局代码执行前，js引擎就会创建一个栈来存储管理所有的执行上下文对象
+        2.在全局执行上下文(window)确定后，将其添加到栈中(压栈)
+        3.在函数执行上下文创建后，将其添加到栈中(压栈)先一个一个进栈，再一个一个执行，执行完后出栈
+        4.在当函数执行完后，将栈顶的对象移除(出栈)
+        5.当所有的代码执行完后，栈中只剩下window
+    -->
+</body>
+
+</html>

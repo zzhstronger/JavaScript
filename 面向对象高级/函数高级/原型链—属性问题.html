@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Fn() {
+
+        }
+        Fn.prototype.a = "zzh";
+        var fun1 = new Fn();
+        console.log(fun1.a, fun1);
+        var fun2 = new Fn();
+        fun2.a = "zengzhihui"; //
+        console.log(fun2.a, fun2);
+
+        console.log("<————————————————————————>")
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.setName = function (name) {
+            this.name = name;
+        }
+        var p1 = new Person("TOM", 12);
+        p1.setName("bob");
+        console.log(p1);
+
+        var p2 = new Person("jack", 12);
+        p2.setName("lucy");
+        console.log(p2);
+
+        //实例对象的隐式原型等于构造函数的显示原型
+        console.log(p1.__proto__ === p2.__proto__);// true
+    </script>
+</head>
+
+<body>
+    <!-- 
+        1.读取对象的属性值时: 会自动到原型链中查找
+        2.设置对象的属性值时: 不会查找原型链,如果当前对象中没有此属性，直接添加此属性并设置其值
+        3.方法一般定义在原型中，属性一般通过构造函数定义在对象本身上(重要!!!)
+
+        实例对象的隐式原型等于构造函数的显示原型
+        原型对象是Object的实例
+    -->
+</body>
+
+</html>

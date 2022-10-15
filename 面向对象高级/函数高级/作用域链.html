@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var a = 10;
+        function fn() {
+            console.log(a);
+        }
+
+        function show(f) {
+            var a = 20;
+            f();
+        }
+        show(fn);
+
+        console.log("<-------------------->")
+
+        var fn = function () {
+            console.log(fn2)
+        }
+        fn();
+
+        var obj = {
+            fn2: function () {
+                console.log(fn2)
+            }
+        }
+        obj.fn2()
+    </script>
+</head>
+
+<body>
+    <!-- 
+        1.理解
+            多个上下级关系的作用域形成的链，它的方向是从下向上的(从内到外)
+            查找变量时就是沿着作用域链来查找的
+        2.查找一个变量的查找规则
+            在当前作用域中的执行上下文中查找对应的属性，如果有直接返回，否则进入上一级查找
+            直到查到全局作用域，在全局执行上下文中如果还没有找到则直接报错
+    -->
+</body>
+
+</html>

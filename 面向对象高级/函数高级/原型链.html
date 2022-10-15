@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Fn() {
+            this.test1 = function () {
+                console.log("test()");
+            }
+        }
+
+        Fn.prototype.test2 = function () {
+            console.log("test2()");
+        }
+
+        var fun = new Fn();
+
+        fun.test1();
+        fun.test2();
+        // fun.test3();
+
+        // 重要:  函数的显示原型指向的对象默认是空的Object实例对象, 也就是说函数的显示原型是空的Object对象的实例(但是Object不满足)
+        console.log(Fn.prototype instanceof Object)// true
+        console.log(Function.prototype instanceof Object)// true
+        console.log(Object.prototype instanceof Object)// false
+
+        // 重要:  所有函数都是Function的实例(包括它本身)
+        console.log(Function.__proto__ === Function.prototype);
+
+        // Object原型对象是原型链的尽头,Object原型对象是Object的实例对象，而实例对象存在__proto__隐式原型,
+        // 并且__proto__值为null
+        console.log(Object.prototype.__proto__);//null
+
+
+    </script>
+</head>
+
+<body>
+    <!-- 
+        1.原型链(图解)
+            访问一个对象的属性时，
+                先在自身属性中查找，找到返回
+                如果没有，再沿着__proto__这条链向上查找，找到返回
+                如果最终没有找到,返回undefined
+            别名:隐式原型链
+            作用:查找对象的方法或属性
+        2.构造函数/原型/实例对象的关系
+        3.构造函数/原型/实例对象的关系
+
+        重要:  1.函数的显示原型指向的对象默认是空的Object实例对象,(但是Object不满足)
+        console.log(Fn.prototype instanceof Object)// true
+        console.log(Function.prototype instanceof Object)// true
+        console.log(Object.prototype instanceof Object)// false
+
+            2.所有函数都是Function的实例(包括它本身),同时Object也是Function的实例
+    -->
+</body>
+
+</html>

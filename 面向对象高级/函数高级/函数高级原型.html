@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+        function Person() {
+
+        }
+
+        function MayClass() {
+
+        }
+        var ma = new Person();
+        var mb = new MayClass();
+        console.log(Person.prototype);
+        console.log(ma.__proto__);
+        console.log(Person.prototype === ma.__proto__);
+        console.log(MayClass.prototype);
+        console.log(mb.__proto__);
+        console.log(MayClass.prototype === mb.__proto__);
+        console.log(Person.prototype === MayClass.prototype);
+
+        function Person(name, age, gender) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        }
+
+        var per = new Person("李白", 18, "男");
+        var per2 = new Person("白居易", 17, "男");
+        Person.prototype.sayName = function () {
+            console.log("hello大家好，我是:" + this.name + "," + this.age + "岁" + "," + this.gender);
+        };
+        per.sayName();
+        per2.sayName();
+
+        console.log(Date.prototype);
+
+        function Human() {
+
+        }
+
+        //js强大之处在于能够为对象添加自定义属性属性
+        Human.prototype.zzh = function () {
+            console.log("你好!");
+        };
+
+        //检查zzh属性是否添加到Human.prototype对象当中去
+        console.log(Human.prototype, typeof Human.prototype);
+        console.log(Human.prototype.constructor === Human);//true
+    </script>
+</head>
+
+<body>
+    <!-- 
+		原型prototype
+		我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype;
+		这个属性对应着一个对象，这个对象就是我们所谓的原型对象
+		如果函数作为普通函数调用prototype没有任何作用
+		当函数通过构造函数调用时，它所创建的对象中都会有一个隐含的属性，
+		指向该构造函数的原型对象，我们可以通过__proto__来访问该属性
+		
+		原型对象就相当于一个公共的区域，所有同一个类的实例都可以访问到这个原型对象
+		我们可以将对象中公有的内容，统一设置到原型对象当中。
+			
+		当我们访问对象的一个属性或方法时，它会先在对象自身中寻找，如果有则直接使用，
+		如果没有则会去原型对象中寻找，如果找到则直接使用
+		
+		以后我们创建构造函数时，可以将这些对象共有的属性和方法，统一添加到构造函数的原型对象中，这样不用分别为每一个对象添加，也不会影响到全局作用域，就可以使每个对象都具有这些
+属性和方法了
+
+        原型对象中有一个属性constructor，它指向函数对象
+		-->
+</body>
+
+</html>

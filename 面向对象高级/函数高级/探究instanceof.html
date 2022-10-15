@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Fun() {
+
+        }
+        var fun1 = new Fun;
+        console.log(fun1 instanceof Fun);//true
+        console.log(fun1 instanceof Object);//true
+
+        console.log("<——————————————————————————————>");
+        console.log(Object instanceof Function);//true
+        console.log(Object instanceof Object);//true
+        console.log(Function instanceof Function);//true
+        console.log(Function instanceof Object);//true
+
+        function Fun() { }
+        console.log(Object instanceof Fun)//false
+
+    </script>
+</head>
+
+<body>
+    <!-- 
+        1.instanceof是如何判断的?
+            表达式 A instanceof B
+            如果B函数的显示原型对象在A对象的原型链上，返回true
+
+
+    -->
+</body>
+
+</html>

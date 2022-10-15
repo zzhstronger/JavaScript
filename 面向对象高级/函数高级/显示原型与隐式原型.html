@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function Fn() {//内部语句:this.prototype={}; 将其赋值为一个对象
+        }
+        //  1.每一个函数function都有一个prototype属性,即显示原型属性
+        console.log(Fn.prototype);
+
+        var fun = new Fn(); //浏览器内部语句:this.__proto__=Fn.prototype;
+        //  2.每个实例对象都有一个__proto__,可称为隐式原型
+        console.log(fun.__proto__);
+
+        //  3.对象的隐式原型的值为其对应构造函数的显示原型的值,即隐式原型属性
+        console.log(Fn.prototype === fun.__proto__);
+
+        // 给原型对象添加方法
+        Fn.prototype.test = function () {
+            console.log("zengzhihui");
+        };
+        // 通过实例调用原型对象的方法
+        fun.test();
+    </script>
+
+</head>
+
+<body>
+    <!-- 
+        1.每一个函数function都有一个prototype,即显示原型,
+        2.每个实例对象都有一个__proto__,可称为隐式原型
+        3.对象的隐式原型的值为其对应构造函数的显示原型的值
+
+        
+    -->
+</body>
+
+</html>

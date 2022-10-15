@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //1.将函数作为另一个函数的返回值
+        function fn1() {
+            var a = 1;
+            function fn2() {
+                a++;//引用外部函数的a
+                console.log(a);
+            }
+            return fn2;//将函数fn2作为fn1函数的返回值返回
+        }
+        var f = fn1();//当外部函数调用n次就产生n个闭包，这里只调用一次，就产生了一个closure
+        //在反复执行内部函数时,闭包的数量不会增多，而且内部函数执行后不会消失,变量不会消失
+        f();//2 该处若不使用闭包，则将在执行完第19行代码后，变量a会自动释放掉，此时a将不存在，执行fn2会报错
+        f();//3
+        fn1();//这里再次调用外部函数，则将再次产生一个内部函数对象，即将产生一个新的闭包closure
+
+        //2.将函数作为实参传递给另外一个函数调用 
+
+        function showDelay(msg, time) {
+            setTimeout(function () {
+                alert(msg);//引用外部函数的msg
+            }, time);//此time并不是内部函数引用了外部函数的time,该time在window全局作用域当中
+        }
+        showDelay("zengzhihui", 4000);
+    </script>
+</head>
+
+<body>
+    <!-- 
+        1.将函数作为另一个函数的返回值
+        2.将函数作为实参传递给另外一个函数调用 
+    -->
+</body>
+
+</html>

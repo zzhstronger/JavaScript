@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        //代码段一
+        var name2 = "The window"
+        var object2 = {
+            name2: "My Object",
+            getNameFunc: function () {
+                var that = this;//该处this指向调用getNameFunc方法 闭包内部函数引用外部函数that
+                var fn = function () {
+                    return that.name2;
+                };
+                return fn;
+            }
+        };
+
+        //该处执行匿名函数function, this指向方法getNameFunc ,将该指向赋值给that
+        console.log(object2.getNameFunc()());//My Object
+
+        //代码段二
+        var name = "The Window";
+        var object = {
+            name: "My Object",
+            getNameFunc: function () {
+                return function () {
+                    return this.name;//该处执行函数this 指向window全局
+                };
+            }
+        };
+        console.log(object.getNameFunc()());//The Window
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

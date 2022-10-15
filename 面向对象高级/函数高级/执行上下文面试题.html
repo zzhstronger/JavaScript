@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        console.log("global begin:" + i);//undefind
+        var i = 1;
+        foo(1);
+        function foo(i) {
+            if (i == 4) {
+                return;
+            }
+            console.log("foo begin:" + i);//1
+            foo(i + 1);//该调用方法称之为(递归调用):在函数的内部调用自己
+            console.log("foo end:" + i);//2
+        }
+        console.log("global end:" + i);//3
+    </script>
+</head>
+
+<body>
+    <!-- 
+        1.依次输出什么?
+        global begin:undefined
+        foo begin:1
+        foo begin:2
+        foo begin:3
+        foo end:3
+        foo end:2
+        foo end:1
+        global end:1
+        2.整个过程中产生了几个执行上下文
+        5个分别是
+        window全局执行上下文
+        当i=1时，函数执行上下文
+        当i=2时, 函数执行上下文
+        当i=3时, 函数执行上下文
+        当i=4时, 函数执行上下文
+    -->
+</body>
+
+</html>
