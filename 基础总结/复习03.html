@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="text/javascript">
+    var Person = {
+        name: "tom",
+        age: 18,
+        sayName: function (name, age) {
+            this.name = name;
+            this.age = age;
+            console.log(this.name);
+            console.log(this.age);
+        }
+    };
+    console.log(Person.name);
+    console.log(Person.age);
+    Person.sayName("李白", 18);
+    Person["sayName"]("白居易", 20);
+
+    var human = {};
+    human["zzh-hhh"] = "曾志辉";
+    console.log(human["zzh-hhh"]);
+    console.log(human);
+
+    var propName = "myAge";
+    var value = 18;
+    human["propName"] = value;
+    console.log(human.propName);
+
+    var obj = {};
+    function test() {
+        this.name = "李白zzh";
+    }
+    test.call(obj);//js强大之处可以让一个函数衬成为指定对象的方法调用
+    console.log(obj.name);
+</script>
+
+<body>
+    <!-- 
+        1.什么是对象?
+            多个数据的封装体
+            用来保存多个数据的容器
+            一个对象代表现实中的一个事物
+            用编程语言来描述现实中的事物
+        2.为什么要用对象?
+            统一管理多个数据
+        3.对象的组成
+            属性: 属性名(本质是字符串)和属性值(任意类型)
+            方法: 一种特别的属性(属性值是函数则称这个属性为一种方法)
+        4.如何访问对象内部数据?
+            .属性名: 编码简单,有时不能用
+            ["属性名"]: 编码麻烦，能通用
+
+        问题: 什么时候必须使用["属性名"]
+            1.属性名包含特殊字符
+            2.变量名不确定
+    -->
+</body>
+
+</html>

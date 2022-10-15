@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+
+            //dom事件回调函数
+            var btn02 = document.getElementById("btn02");
+            btn02.onclick = function () {
+                alert(btn02.innerHTML);
+            };
+
+            //超时计时器回调函数
+            setTimeout(function () {
+                alert("到点啦!");
+            }, 2000)
+
+        };
+    </script>
+</head>
+
+<body>
+    <!-- 
+        什么是回调函数?
+            由程序猿自己定义的
+            没有人为调用,浏览器自己调用
+            但最终执行了
+        常见的回调函数?
+            dom事件的回调函数
+            定时器回调函数
+            ajax请求回调函数
+            生命周期回调函数
+
+        定时器
+            超时定时器
+            循环定时器
+    -->
+    <input type="button" value="测试点击事件" id="btn01">
+    <br><br>
+    <button id="btn02">测试点击事件</button>
+</body>
+
+</html>

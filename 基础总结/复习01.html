@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script type="text/javascript">
+		//基本类型
+		var a;
+		var result = typeof a;
+		console.log(typeof result);
+		console.log(a, typeof a === "undefined", a === undefined);
+		console.log(undefined === "undefined"); //false
+
+		var a = 3;
+		console.log(typeof a === "number");
+
+		var a = "aaa";
+		console.log(typeof a === "string");
+
+		var a = true;
+		console.log(typeof a === "boolean");
+
+		var a = null;
+		console.log(a);
+		console.log(typeof a === "null", a === null);
+
+		// 对象类型
+		var obj1 = {
+			name: ["李白", console.log],
+			fun: function () {
+				console.log("fun");
+				return function () {
+					return "zzh";
+				}
+			},
+		};
+
+		console.log(obj1.name);
+		console.log(obj1.fun);
+		console.log(obj1 instanceof Object);
+		console.log(obj1.name instanceof Array, obj1 instanceof Object);
+		console.log(obj1.fun instanceof Function, obj1.fun instanceof Object);
+		console.log(typeof obj1.fun === "function");
+		console.log("------->");
+		console.log(obj1.name[1] instanceof Function);
+		obj1.name[1]("HELLO");
+		obj1.name[1](obj1.fun()());
+		console.log(typeof obj1.name === "Array");
+		console.log(obj1.name instanceof Array);
+
+		var Arr = [1, 2, 3];
+		console.log(typeof Arr);
+
+		// 实例: 实例对象
+		// 类型: 类型对象
+		function Person(name, age) {//构造函数 类型对象
+			this.name = name;
+			this.age = age;
+		}
+		var p = new Person("李白", 12);//根据类型创建的实例对象
+		console.log(p.name);
+
+	</script>
+</head>
+
+<body>
+	<!-- 
+			1.数据分类
+				基本(值)类型
+				string: 任意字符串
+				Number: 任意的数值
+				boolean: 布尔值true/false
+				undefined: 未定义
+				null: 空值
+			
+				对象(引用)类型
+				Object: 任意对象
+				function: 函数，一种特别的对象(可以执行,存储代码)
+				Array: 数组，一种特别的对象(数值下标，索引，内部的数据是有序的)
+			2.判断
+				typeof其输出结果为字面量
+				可以判断字面量"undefined"/数值/字符串/布尔值/function
+				不能判断null和object object与Array
+				instanceof 判断对象的具体类型 判断是函数还是数组
+				=== 
+				可以判断:undefined跟null因为他们就一个值
+				
+		-->
+
+	<!-- 1.undefined与null的区别?
+				-undefined代表定义了未赋值
+				-null定义并赋值了，只是值为null
+			2.什么时候给变量赋值为null呢?
+				//起始时，初始赋值为null，表明将要赋值为对象
+				var b=null
+				//确定对象就赋值
+				b=["李白"]
+				//最后，让b指向的对象成为垃圾对象(被垃圾回收器回收)
+			3.严格区分变量类型与数据类型? 
+				*数据类型
+					*基本类型
+					*对象类型
+				*变量类型(变量内存值的类型)
+					*基本类型:保存就是基本类型的数据
+					*引用类型:保存的是地址值
+	-->
+	<!-- 
+		1.什么是数据?
+			存储在内存中代表特定信息的数据，本质上是01010101
+			数据的特点:可传递，可运算
+			一切皆数据
+			内存中所有操作的目标:数据
+				算数运算
+				逻辑运算
+				赋值运算
+		2.什么是内存?
+			内存条通电后产生的可存储数据的空间(临时的)
+			内存的产生和死亡:内存条(电路板)==>通电==>产生内存条==>存储数据==>处理数据==>断电==>内存空间和数据都消失
+			一块小内存的2个数据
+				内部存储的数据
+				地址值数据
+			内存的分类}
+				栈内存 全局变量/局部变量
+				堆内存 对象
+		3.什么是变量?
+			可以变化的量,由变量名和变量值组成
+			每个变量都对应一个小内存,变量名用来查找对应的内存,变量值就是内存中保存的数值数据
+		4.数据,内存,变量 三者之间的关系
+			内存用来存储数据的空间,变量是内存的标识。
+	
+    -->
+</body>
+
+</html>

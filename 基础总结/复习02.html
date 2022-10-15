@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        问题: var a=xxx,a内存到底保存的是什么?
+            xxx是基本数据，保存的就是这个基本数据
+            xxx是对象，保存的是对象的地址值
+            xxx是一个变量,保存的xxx的内存内容(可能是基本数据类型，也可能是地址值)
+        
+        关于引用变量赋值的问题
+            2个引用变量指向同一个对象,通过一个变量修改对象内部数据,另一个变量看到的是修改之后的数据
+            2个引用变量指向同一个对象，让其中一个引用变量指向另一个对象，另一个引用变量依然指向前一个对象
+    -->
+    <script type="text/javascript">
+        var obj1 = { name: "李白", age: 18 };//设置一个对象
+        var obj2 = obj1;//将对象内部数据赋值给新的对象
+        obj1.name = "白居易";//修改原先对象的内部数据name
+        obj1.age = 20;//修改原先对象的内部数据age
+        console.log(obj2.age);//新的对象看到的是修改之后的数据 20
+        console.log(obj2.name);//新的对象看到的是修改之后的数据 白居易
+        obj2.address = "tang";//修改新的对象的内部数据address
+        console.log(obj1.address);//原先的对象看到的是修改之后的数据 tang
+        function fn(obj) {
+            obj.name = "李商隐";
+        }
+
+        fn(obj1);
+        console.log(obj2.name);//李商隐
+        var a = { age: 12 };
+        var b = a;
+        a = { name: "bob", age: 13 };
+        console.log(a.age, b.age, a.name, b.name);//13 12 bob undefined
+
+        function fn2(obj) {
+            obj = { age: 15 };
+        }
+        fn2(a);
+        console.log(a.age);//13
+
+        console.log("------->");
+
+        // 问题:在js调用函数时传递变量参数时，是值传递还是引用传递
+        //      理解1: 都是值(基本/地址值)传递
+        //      理解2: 可能是值传递，也可能是引用传递(地址值)
+        var a = 3;
+        function fn(a) {
+            a = a + 1;
+        }
+        fn(a);
+        console.log(a);
+
+        var b = 3;
+        function fn() {
+            b = b + 1;
+        }
+        fn(b);
+        console.log(b);
+
+        //问题:js引擎如何管理内存?
+        //  1.内存生命周期
+        //      分配空间，得到使用权
+        //      存储数据,反复进行操作
+        //      释放空间
+        //  2.释放内存
+        // 局部变量:函数执行完后自动释放
+        // 对象:成为垃圾对象之后垃圾回收器回收
+        // 全局变量不会自动释放，以便之后使用
+
+        var d = 3;
+        var obj3 = { name: "hhh", age: 18, gender: "man" };
+
+        function fn3() {
+            var b = {};
+        }
+        fu3();//执行完函数后变量b是自动释放的,b所指向的对象是在后面的某个时刻被垃圾回收器回收的,
+        //两者之间有一定的时间间隔
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+        function fun1(a, b) {
+            console.log("a=" + a + ",b=" + b);
+        }
+        fun1(123, 456);
+
+        function fun2() {
+            console.log(this.name);
+        }
+        window.fun2();
+
+        var obj = {
+            name: "函数作用域中的name属性",
+            sayName: fun2
+        };
+        console.log(obj.sayName == fun2);
+
+        var name = "全局的name属性" //这行代码等同于window.name="全局的name属性"
+        //因为在全局作用域中创建的变量都会作为window对象的属性保存
+        window.fun2();
+
+        var obj = {
+            name: "曾志辉",
+            sayName: fun2
+        };
+        console.log(obj.sayName == fun2);
+        //以方法的形式调用，this是调用方法的对象 obj
+        obj.sayName();
+
+        function fun3() {
+            console.log(this);
+        }
+
+        const obj1 = {
+            name: "李商隐",
+            sayName: fun3
+        };
+
+        const obj2 = {
+            name: "杜甫",
+            sayName: fun3
+        };
+        console.log(obj2.sayName == fun3);
+        obj1.sayName(); //这里的this指的是obj1
+        obj2.sayName(); //这里的this指的是obj2
+
+        //我们可以通过给this添加属性，从而输出属性值
+        function fun4() {
+            console.log(this.name);
+        }
+
+        const obj3 = {
+            name: "白居易",
+            sayName: fun4
+        };
+        console.log(obj3.sayName == fun4);
+        obj3.sayName(); //这里的this.name调用的是obj3.Name的属性，
+        //最终结果将输出属性值
+
+
+
+        //创建一个name变量
+        var name = "全局";
+        //创建一个fun5()函数
+        function fun5() {
+            console.log(this.name);
+        }
+
+        //创建两个对象
+        const obj4 = {
+            name: "李白",
+            sayName: fun5
+        };
+
+        const obj5 = {
+            name: "白居易",
+            sayName: fun5
+        };
+        obj4.sayName();
+    </script>
+</head>
+
+<body>
+    <!-- 
+		解析器在调用函数时每次都会向函数内部传递进一个隐含的参数
+		这个隐含参数就叫this，this指向的是一个对象，
+		这个对象我们称为函数执行的上下文对象，
+		根据函数的调用方式的不同，this会指向不同的对象
+		1.以函数的形式调用时，this永远都是window
+			2.以方法的形式调用时，this就是调用方法的那个对象
+
+        如何确定this的值
+        1 test(); window
+        2 p.test(); p
+        3 new test(); 新建的对象
+        4 p.call(obj); obj
+		-->
+</body>
+
+</html>
