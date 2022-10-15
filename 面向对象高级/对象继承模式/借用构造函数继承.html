@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>借用构造函数继承</title>
+    <script>
+        // 1.定义父类型构造函数
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        // 2.定义子类型构造函数
+        function Student(name, age, address) {
+
+            // 3.在子类型构造函数中调用父类型的构造
+            Person.call(this, name, age);//相当于: this.Person(name,age),this的指向是动态的
+            // 如果不执行代码Person.call(this, name, age);相当于下面两行代码
+            // this.name = name;
+            // this.age = age;
+            this.address = address;
+        }
+
+        var s = new Student("zzh", 18, "lichuan");//在执行Person.call(this, name, age);时其中的this指向的是s
+        console.log(s.name, s.age, s.address);
+    </script>
+</head>
+
+<body>
+    <!-- 
+        方式2: 借用构造函数继承(假的) (针对于得到父元素的属性)
+        1.套路:
+            1.定义父类型构造函数
+            2.定义子类型构造函数
+            3.在子类型构造函数中调用父类型的构造
+        2.关键:
+            1.在子类型构造函数中通用call()调用父类型构造函数
+-->
+</body>
+
+</html>

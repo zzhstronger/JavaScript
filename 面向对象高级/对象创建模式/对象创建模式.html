@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        //方法一
+        // Object构造函数模式
+        var Person = new Object();
+        Person.name = "zzh";
+        Person.age = "18";
+        Person.address = "lichuan";
+        Person.setPerson = function (name, age, address) {
+            this.name = name;
+            this.age = age;
+            this.address = address;
+        }
+        Person.setPerson("zmq", 15, "lichuan")
+        console.log(Person.name, Person.age, Person.address);
+
+        //方法二
+        // 对象字面量模式
+        var obj = {//如果创建多个对象会造成代码重复
+            name: "Tom",
+            age: 12,
+            setName: function (name) {
+                this.name = name;
+            }
+        };
+        obj.setName("zzh");
+        console.log(obj.name, obj.age);
+
+
+    </script>
+</head>
+
+<body>
+    <!-- 
+        方式一:Object构造函数模式
+        套路:先创建空Object对象，再动态添加属性/方法
+        适用场景:起始时不确定对象内部数据
+        问题: 语句太多
+
+        方法二:对象字面量模式
+        套路:使用{}创建对象,同时指定属性/方法
+        适用场景:起始时对象内部数据是确定的
+        问题:如果创建多个对象,有重复代码
+
+        方法三:工厂模式
+        套路:通过工厂函数动态创建对象并返回
+        适用场景: 需要创建多个对象
+        问题:对象没有一个具体的类型，都是Object类型
+
+    -->
+</body>
+
+</html>

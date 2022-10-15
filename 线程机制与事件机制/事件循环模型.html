@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        1.所有代码分类
+            初始化执行代码(同时代码):包含绑定dom事件监听，设置定时器，发送ajax请求的代码
+            回调执行代码(异步代码):处理回调逻辑
+        2.js引擎执行代码的基本流程:
+            先执行初始化代码===>后执行回调代码
+        3.模型的2个重要组成部分:
+            事件(定时器/DOM事件/Ajax)管理模块
+            回调队列
+        4.模型的运行流程:
+            执行初始化代码, 将事件回调函数交给对应模块
+            当事件发生时,管理模块会将回调函数及其数据添加到回调队列中
+            只有当初始化代码执行完后(可能要一定时间),才会遍历读取回调队列中的回调函数执行
+    -->
+</body>
+
+</html>

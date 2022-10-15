@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工厂函数</title>
+    <script>
+        function createPerson(name, age, address) {//返回一个对象的函数都可以称之为工厂函数
+            var obj = {
+                name: name,
+                age: age,
+                address: address,
+                setName: function (name, age, address) {
+                    this.name = name;
+                    this.age = age;
+                    this.address = address;
+                }
+            }
+            return obj
+        }
+        var p1 = createPerson("zzh", 18, "lichuan");//调用函数(返回值为一个对象)作为返回值赋值给p1
+        p1.setName("zgw", 45, "lichuan");
+        var p2 = createPerson("zmq", 15, "lichuan");//调用函数(返回值为一个对象)作为返回值赋值给p2
+        p2.setName("hqy", 39, "lichuan");
+        console.log(p1.name, p1.age, p1.address);
+        console.log(p2.name, p2.age, p2.address);
+
+    </script>
+</head>
+
+<body>
+    <!-- 方法三:工厂模式
+    套路:通过工厂函数动态创建对象并返回
+    适用场景: 需要创建多个对象
+    问题:对象没有一个具体的类型，都是Object类型 -->
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义构造函数</title>
+    <script>
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            this.setName = function (name, age) {
+                this.name = name;
+                this.age = age;
+            };
+        }
+
+        var p1 = new Person("zzh", 18);
+        p1.setName("zmq", 15);
+        console.log(typeof p1);
+        console.log(p1 instanceof Person);
+
+        function Student(name, age) {
+            this.name = name;
+            this.age = age;
+            this.setName = function (name, age) {
+                this.name = name;
+                this.age = age;
+            };
+        }
+
+        var s1 = new Student("zmq", 15);
+        s1.setName("zzh", 18);
+        console.log(typeof s1);
+        console.log(s1 instanceof Student);
+
+        console.log(p1, s1);
+
+
+    </script>
+</head>
+
+<body>
+    <!-- 方法四: 自定义构造函数模式
+    套路:自定义构造函数，通过new创建对象
+    适用场景:需要创建多个类型的对象
+    问题: 每个对象都有相同的数据，浪费资源 -->
+</body>
+
+</html>

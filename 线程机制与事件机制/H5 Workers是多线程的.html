@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function () {
+			function fibonacci(number) {//递归调用,当输入的值过大时，会导致程序执行卡崩
+				return number <= 2 ? 1 : fibonacci(number - 1) + fibonacci(number - 2);
+			}
+			console.log(fibonacci(8));
+			var input = document.getElementById("number");
+			var btn = document.getElementById("btn");
+			btn.onclick = function () {
+				var number = input.value;//将number传递给分线程
+				var result = fibonacci(number);//在分线程中计算结果并将其传递给主线程
+				console.log(result);
+			}
+		};
+		// 当输入的值太大了的时候，主线程一直计算会导致程序卡死
+	</script>
+</head>
+
+<body>
+	<!-- 
+        1.H5规范提供了js分线程的实现,取名为:Web Workers
+        2.相关API
+            Worker: 构造函数,加载分线程执行的js文件
+            Worker.prototype.onmessage:用于接收另一个线程的回调函数
+            Worker.prototype.postMessage:向另一个线程发送信息
+        3.不足
+            worker内代码不能操作DOM(更新UI)
+            不能跨域加载JS
+            不是每个浏览器都支持这个新特性
+			
+		Web Workers 是吗HTML5提供的一个javascript多线程解决方案
+		我们可以将一些大计算量的代码交由web Worker运行而不冻结用户界面(执行速度反而慢,传数据需要时间)
+		但是子线程完全受主线程控制，且不得操作DOM。
+		所以,这个新标准并没有改变javascript单线程的本质
+		
+		使用方法:创建在分线程执行的js文件
+		在主线程中的js中发消息并设置回调
+    -->
+	<input type="text" placeholder="数值" id="number">
+	<button type="button" id="btn">计算</button>
+
+</body>
+
+</html>

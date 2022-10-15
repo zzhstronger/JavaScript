@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1.定义父类型构造函数
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        Person.prototype.setName = function (name) {
+            this.name = name;
+        }
+
+        // 2.定义子类型构造函数
+        function Student(name, age, address) {
+
+            // 3.在子类型构造函数中调用父类型的构造
+            Person.call(this, name, age);//相当于: this.Person(name,age),this的指向是动态的
+            // 如果不执行代码Person.call(this, name, age);相当于下面两行代码
+            // this.name = name;
+            // this.age = age;
+            this.address = address;
+        }
+
+        Student.prototype = new Person();//为了能够看到父元素的方法
+        Student.prototype.constructor = Student;//修正constructor的属性指回Stdent
+
+        Student.prototype.setAge = function (age) {
+            this.age = age;
+        }
+
+        var s = new Student("zmq", 20, "lichuan");
+        s.setName("zzh");
+        s.setAge(23);
+        console.log(s);
+        console.log(s.constructor);
+        console.log(s.name, s.age, s.address);
+    </script>
+</head>
+
+<body>
+    <!-- 
+        方式3: 原型链+借用构造函数的组合继承
+        1. 利用原型链实现对父元素的对象的方法的继承
+        2. 利用call(this,,,,,,)借用父类型构造函数初始化相同属性
+    -->
+</body>
+
+</html>
